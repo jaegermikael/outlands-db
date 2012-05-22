@@ -1,0 +1,87 @@
+mangos-one-database ![Project status](http://getmangos.com/assets/img/repository-status-maintained.png)
+===================
+A content database for [mangos-one][10], and *World of Warcraft Client Patch
+2.4.3 - [_Fury of the Sunwell_][50]. It is compatible with client 2.4.3 (build
+8606).
+
+This database is currently just an import of the [TBC-DB project][20] by X-Savior
+and is intended to help new users in finding content for their **mangos-one**
+installation.
+
+The current data is based on [TBC-DBC Update Pack 1.1.1][21].
+
+
+Development
+-----------
+The **develop** branch is where the development of *mangos-one database* is
+done. Any of the commits submitted here may or may not become part of the next
+release.
+
+It is recommended to use the **master** branch for stable systems, and only use
+the **develop** branch if you intend to test commits and submit issues and/or
+reports.
+
+
+Compatibility
+-------------
+The *mangos-one* database is compatible with [mangos-one revision 1376][10]
+and newer.  It also requires [scriptdev2 revision 2271][11] in order to be
+fully enjoyable.
+
+
+Getting started
+---------------
+The basic principle behind this customized database repository is to keep the
+databases stored as individual tables, and all content rows stored as single
+lines to make changes more trackable for the user (that would be you).
+
+The repository is developed and maintained using the excellent [git-flow][110]
+extension for git, to provide a clear, and visible [workflow][111] to the user.
+
+
+Installation
+------------
+By default **mangos-one** uses four databases:
+
+* `op_characters`: where all character data is stored,
+* `op_realm`: where user accounts, and realms are defined,
+* `op_world`: where the world with creatures, items, objects, quests, etc. is defined,
+* `op_scripts`: and the ScriptDev2 database.
+
+In order to use this database repository, you will have to edit `mysql_info`,
+and edit in the desired username, hostname, and password.
+
+Once you have the desired database user and rights configured in MySQL, you may
+use the `mysql_import` script to load the individual data tables into your
+databases.  Should your database user have wildcard rights, the script creates
+the database - if not existent - and then populates them.
+
+If you make changes to the database, either by adding/modifying content, or by
+making changes to the database structure, you may execute `mysql_dump` to save
+each table into the repository.  Should you add or remove tables, add `dump_data`,
+`dump_struc` commands to `mysql_dump`, or remove them as needed.
+
+
+And if something goes wrong?
+----------------------------
+_If_ you feel like submitting an issue, please do so *only* if you are willing
+to provide a detailed report, and are available to verify any solution to the
+issue provided by the developers of this repository.
+
+
+[1]: https://github.com/mangos-one "mangos-one"
+
+[10]: https://github.com/mangos-one/server "mangos one"
+[11]: https://github.com/mangos-one/scriptdev2 "script bindings"
+[12]: https://github.com/mangos-one/database "content database"
+
+[20]: http://sourceforge.net/projects/tbc-db/ "TBC DB"
+[21]: http://udb.no-ip.org/index.php/topic,12757.0.html "TBC DB Update Pack 1.1.1"
+
+[50]: http://eu.blizzard.com/en-gb/games/burningcrusade/ "World of Warcraft: The Burning Crusade"
+[51]: http://www.wowpedia.org/Patch_2.4.3 "WoW 2.4.3 - Fury of the Sunwell"
+
+[101]: http://github.com/ "github - social coding"
+
+[110]: http://nvie.com/posts/a-successful-git-branching-model/ "git flow extension"
+[111]: http://yakiloo.com/getting-started-git-flow/ "git flow workflow"

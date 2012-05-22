@@ -1,0 +1,244 @@
+#!/bin/bash
+#
+# This script will dump the contents of the MySQL database to files.
+#
+
+. ./mysql_info
+
+function dump_data ()
+{
+    echo -n "Dumping contents of $1:$2 ..."
+    [ ! -d $1 ] && mkdir $1
+    mysqldump$OPTS -Q --skip-dump-date --add-drop-table $1 $2 >$1/$2.sql
+    echo " done"
+}
+
+function dump_struc ()
+{
+    echo -n "Dumping structure of $1:$2 ..."
+    [ ! -d $1 ] && mkdir $1
+    mysqldump$OPTS -Q --skip-dump-date --add-drop-table --no-data $1 $2 >$1/$2.sql
+    echo " done"
+}
+
+#
+# Character database
+#
+dump_data  op_characters character_db_version
+
+#
+# Realm database
+#
+dump_data  op_realm account
+dump_data  op_realm realmd_db_version
+dump_data  op_realm realmlist
+
+#
+# ScriptDev2 database
+#
+dump_data  op_scripts gossip_texts
+dump_data  op_scripts script_texts
+dump_data  op_scripts script_waypoint
+dump_data  op_scripts sd2_db_version
+
+#
+# World database
+#
+dump_data  op_world areatrigger_involvedrelation
+dump_data  op_world areatrigger_tavern
+dump_data  op_world areatrigger_teleport
+dump_data  op_world battleground_events
+dump_data  op_world battleground_template
+dump_data  op_world battlemaster_entry
+dump_data  op_world command
+dump_data  op_world creature
+dump_data  op_world creature_addon
+dump_data  op_world creature_ai_scripts
+dump_data  op_world creature_ai_summons
+dump_data  op_world creature_ai_texts
+dump_data  op_world creature_battleground
+dump_data  op_world creature_equip_template
+dump_data  op_world creature_equip_template_raw
+dump_data  op_world creature_involvedrelation
+dump_data  op_world creature_loot_template
+dump_data  op_world creature_model_info
+dump_data  op_world creature_model_race
+dump_data  op_world creature_movement
+dump_data  op_world creature_movement_scripts
+dump_data  op_world creature_movement_template
+dump_data  op_world creature_onkill_reputation
+dump_data  op_world creature_questrelation
+dump_data  op_world creature_template
+dump_data  op_world creature_template_addon
+dump_data  op_world db_script_string
+dump_data  op_world db_version
+dump_data  op_world disenchant_loot_template
+dump_data  op_world event_scripts
+dump_data  op_world exploration_basexp
+dump_data  op_world fishing_loot_template
+dump_data  op_world gameobject
+dump_data  op_world gameobject_battleground
+dump_data  op_world gameobject_involvedrelation
+dump_data  op_world gameobject_loot_template
+dump_data  op_world gameobject_questrelation
+dump_data  op_world gameobject_scripts
+dump_data  op_world gameobject_template
+dump_data  op_world game_event
+dump_data  op_world game_event_creature
+dump_data  op_world game_event_creature_data
+dump_data  op_world game_event_gameobject
+dump_data  op_world game_event_mail
+dump_data  op_world game_event_quest
+dump_data  op_world game_graveyard_zone
+dump_data  op_world game_tele
+dump_data  op_world game_weather
+dump_data  op_world gossip_menu
+dump_data  op_world gossip_menu_option
+dump_data  op_world gossip_scripts
+dump_data  op_world instance_template
+dump_data  op_world item_enchantment_template
+dump_data  op_world item_loot_template
+dump_data  op_world item_required_target
+dump_data  op_world item_template
+dump_data  op_world mail_level_reward
+dump_data  op_world mail_loot_template
+dump_data  op_world mangos_string
+dump_data  op_world npc_gossip
+dump_data  op_world npc_text
+dump_data  op_world npc_trainer
+dump_data  op_world npc_trainer_template
+dump_data  op_world npc_vendor
+dump_data  op_world npc_vendor_template
+dump_data  op_world page_text
+dump_data  op_world petcreateinfo_spell
+dump_data  op_world pet_levelstats
+dump_data  op_world pet_name_generation
+dump_data  op_world pickpocketing_loot_template
+dump_data  op_world playercreateinfo
+dump_data  op_world playercreateinfo_action
+dump_data  op_world playercreateinfo_item
+dump_data  op_world playercreateinfo_spell
+dump_data  op_world player_classlevelstats
+dump_data  op_world player_levelstats
+dump_data  op_world player_xp_for_level
+dump_data  op_world points_of_interest
+dump_data  op_world pool_creature
+dump_data  op_world pool_creature_template
+dump_data  op_world pool_gameobject
+dump_data  op_world pool_gameobject_template
+dump_data  op_world pool_pool
+dump_data  op_world pool_template
+dump_data  op_world prospecting_loot_template
+dump_data  op_world quest_end_scripts
+dump_data  op_world quest_start_scripts
+dump_data  op_world quest_template
+dump_data  op_world reference_loot_template
+dump_data  op_world reputation_reward_rate
+dump_data  op_world reputation_spillover_template
+dump_data  op_world reserved_name
+dump_data  op_world scripted_areatrigger
+dump_data  op_world scripted_event_id
+dump_data  op_world skill_discovery_template
+dump_data  op_world skill_extra_item_template
+dump_data  op_world skill_fishing_base_level
+dump_data  op_world skinning_loot_template
+dump_data  op_world spell_affect
+dump_data  op_world spell_area
+dump_data  op_world spell_bonus_data
+dump_data  op_world spell_chain
+dump_data  op_world spell_elixir
+dump_data  op_world spell_learn_spell
+dump_data  op_world spell_pet_auras
+dump_data  op_world spell_proc_event
+dump_data  op_world spell_proc_item_enchant
+dump_data  op_world spell_scripts
+dump_data  op_world spell_script_target
+dump_data  op_world spell_target_position
+dump_data  op_world spell_threat
+dump_data  op_world transports
+dump_data  op_world world_template
+
+#
+# Empty character database tables
+#
+dump_struc op_characters arena_team
+dump_struc op_characters arena_team_member
+dump_struc op_characters arena_team_stats
+dump_struc op_characters auction
+dump_struc op_characters bugreport
+dump_struc op_characters characters
+dump_struc op_characters character_action
+dump_struc op_characters character_aura
+dump_struc op_characters character_battleground_data
+dump_struc op_characters character_declinedname
+dump_struc op_characters character_gifts
+dump_struc op_characters character_homebind
+dump_struc op_characters character_instance
+dump_struc op_characters character_inventory
+dump_struc op_characters character_pet
+dump_struc op_characters character_pet_declinedname
+dump_struc op_characters character_queststatus
+dump_struc op_characters character_queststatus_daily
+dump_struc op_characters character_reputation
+dump_struc op_characters character_skills
+dump_struc op_characters character_social
+dump_struc op_characters character_spell
+dump_struc op_characters character_spell_cooldown
+dump_struc op_characters character_stats
+dump_struc op_characters character_ticket
+dump_struc op_characters character_tutorial
+dump_struc op_characters corpse
+dump_struc op_characters creature_respawn
+dump_struc op_characters data_backup
+dump_struc op_characters gameobject_respawn
+dump_struc op_characters game_event_status
+dump_struc op_characters groups
+dump_struc op_characters group_instance
+dump_struc op_characters group_member
+dump_struc op_characters guild
+dump_struc op_characters guild_bank_eventlog
+dump_struc op_characters guild_bank_item
+dump_struc op_characters guild_bank_right
+dump_struc op_characters guild_bank_tab
+dump_struc op_characters guild_eventlog
+dump_struc op_characters guild_member
+dump_struc op_characters guild_rank
+dump_struc op_characters instance
+dump_struc op_characters instance_reset
+dump_struc op_characters item_instance
+dump_struc op_characters item_loot
+dump_struc op_characters item_text
+dump_struc op_characters mail
+dump_struc op_characters mail_items
+dump_struc op_characters petition
+dump_struc op_characters petition_sign
+dump_struc op_characters pet_aura
+dump_struc op_characters pet_spell
+dump_struc op_characters pet_spell_cooldown
+dump_struc op_characters saved_variables
+dump_struc op_characters world
+
+#
+# Empty realm database tables
+#
+dump_struc op_realm account_banned
+dump_struc op_realm ip_banned
+dump_struc op_realm realmcharacters
+dump_struc op_realm uptime
+
+#
+# Empty ScriptDev2 database tables
+#
+dump_struc op_scripts custom_texts
+
+#
+# Empty World database tables
+#
+dump_struc op_world locales_creature
+dump_struc op_world locales_gameobject
+dump_struc op_world locales_gossip_menu_option
+dump_struc op_world locales_item
+dump_struc op_world locales_npc_text
+dump_struc op_world locales_page_text
+dump_struc op_world locales_points_of_interest
+dump_struc op_world locales_quest

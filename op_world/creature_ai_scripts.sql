@@ -14000,6 +14000,7 @@ INSERT INTO `creature_ai_scripts` VALUES
 (1684409,16844,9,3,100,1,0,8,500,500,23,-1,0,0,0,0,0,0,0,0,0,0,'Crust Burster - Set Phase 1 at 8 Yards (Phase 2)'),
 (1684410,16844,7,0,100,0,0,0,0,0,11,29147,0,21,11,33928,0,0,21,0,0,0,'Crust Burster - Cast Sandworm Submerge Visual and Cast Tunnel Bore Passive and Prevent Combat Movement on Evade'),
 (1684411,16844,7,0,100,0,0,0,0,0,22,1,0,0,0,0,0,0,0,0,0,0,'Crust Burster - Set Phase 1 on Evade'),
+(1684412,16844,4,0,100,0,0,0,0,0,19,33554432,0,0,0,0,0,0,0,0,0,0, 'Crust Burster - Set unit attackable on aggro');
 (1684601,16846,2,0,100,0,20,0,0,0,11,3019,0,0,1,-46,0,0,0,0,0,0,'Mag\'har Grunt - Cast Enrage When Below 20% HP'),
 (1685701,16857,11,0,100,0,0,0,0,0,11,29147,0,16,11,33928,0,0,21,0,0,0,'Marauding Crust Burster - Cast Sandworm Submerge Visual and Cast Tunnel Bore Passive and Prevent Combat Movement on Spawn'),
 (1685702,16857,1,0,100,1,1000,1000,1000,1000,11,29147,0,48,0,0,0,0,0,0,0,0,'Marauding Crust Burster - Cast Sandworm Submerge Visual OOC'),
